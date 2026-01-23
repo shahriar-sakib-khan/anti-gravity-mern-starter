@@ -1,5 +1,6 @@
 import { X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 interface ModalProps {
   isOpen: boolean;
@@ -29,19 +30,19 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+  return createPortal(
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
       <div
         ref={modalRef}
-        className="bg-[#0A0A0A] border border-white/10 rounded-xl w-full max-w-md shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+        className="bg-white text-card-foreground border border-border rounded-xl w-full max-w-md shadow-2xl animate-in fade-in zoom-in-95 duration-200"
         role="dialog"
         aria-modal="true"
       >
-        <div className="flex items-center justify-between p-6 border-b border-white/5">
-          <h3 className="text-xl font-bold text-white">{title}</h3>
+        <div className="flex items-center justify-between p-6 border-b border-border">
+          <h3 className="text-xl font-semibold leading-none tracking-tight">{title}</h3>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/5"
+            className="text-muted-foreground hover:text-foreground transition-colors p-1 rounded-lg hover:bg-muted"
           >
             <X size={20} />
           </button>
@@ -50,6 +51,7 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

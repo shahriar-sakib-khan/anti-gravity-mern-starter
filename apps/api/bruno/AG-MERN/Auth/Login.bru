@@ -12,13 +12,14 @@ post {
 
 body:json {
   {
-    "email": "test@example.com",
-    "password": "Password123!"
+    "email": "user@gmail.com",
+    "password": "123456"
   }
 }
 
 script:post-response {
-  if (res.status === 200 && res.body.accessToken) {
+  if (res.status === 200) {
     bru.setEnvVar("accessToken", res.body.accessToken);
+    bru.setEnvVar("userId", res.body.user._id);
   }
 }

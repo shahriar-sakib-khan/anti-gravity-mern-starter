@@ -1,3 +1,21 @@
+/**
+ * TEST SCENARIOS (Manifest)
+ * ---------------------------------------------------
+ * 1. [Admin] GET /users returns list of all users (200)
+ * 2. [Admin] PATCH /users/:id/role updates user role (200)
+ * 3. [Validation] PATCH /users/:id/role handles invalid role (500/400)
+ * 4. [User] POST /me/avatar uploads image (200)
+ * 5. [User] DELETE /me/avatar removes image (200)
+ * 6. [User] PATCH /me updates profile details (200)
+ * 7. [User] PUT /me/password changes password (200)
+ * 8. [Admin] GET /:id returns user details
+ * 9. [Logic] DELETE /:id deletes specific user
+ * 10. [Security] DELETE /:id prevents deleting Admin users (403)
+ * 10. [Security] DELETE /:id prevents deleting Admin users (403)
+ * 11. [Admin] POST /users/:id/password-reset resets password (200)
+ * 12. [Edge Case] POST /users/:id/password-reset handles user not found (500)
+ * ---------------------------------------------------
+ */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import request from 'supertest';
 import express from 'express';
@@ -188,6 +206,31 @@ describe('UserController', () => {
 
        expect(res.status).toHaveBeenCalledWith(403);
        expect((UserService as any).deleteUser).not.toHaveBeenCalled();
+    });
+  });
+  describe('POST /users/:id/password-reset', () => {
+    it('should reset password if admin', async () => {
+      const req = { params: { id: 'target_user' }, body: { newPassword: 'reset123' } } as any;
+      const res = { json: vi.fn(), status: vi.fn().mockReturnThis() } as any;
+
+      (UserService as any).adminResetPassword = vi.fn().mockResolvedValue(true);
+
+      await UserController.adminResetPassword(req, res);
+
+      expect((UserService as any).adminResetPassword).toHaveBeenCalledWith('target_user', 'reset123');
+      expect(res.json).toHaveBeenCalledWith({ success: true });
+    });
+
+    it('should handle service errors (e.g., user not found)', async () => {
+         const req = { params: { id: 'unknown_user' }, body: { newPassword: 'reset123' } } as any;
+         const res = { json: vi.fn(), status: vi.fn().mockReturnThis() } as any;
+
+         (UserService as any).adminResetPassword = vi.fn().mockRejectedValue(new Error('User not found'));
+
+         await UserController.adminResetPassword(req, res);
+
+         expect(res.status).toHaveBeenCalledWith(500);
+         expect(res.json).toHaveBeenCalledWith({ message: 'User not found' });
     });
   });
 });

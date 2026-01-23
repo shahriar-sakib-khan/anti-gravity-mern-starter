@@ -84,34 +84,20 @@ A high-performance, feature-rich **Modular Monolith MERN Stack Boilerplate** des
 
 ## 🧠 Documentation & Antigravity Workflow
 
-This project is built with the **Antigravity Protocol**—an "Agent-First" development philosophy. The `docs/` directory acts as the **Context Window** for both human developers and AI Agents (Cursor, Windsurf, etc.).
+This project is built with the **Antigravity Protocol**—an "Agent-First" development philosophy. The `docs/` directory acts as the **Context Window** for both human developers and AI Agents.
 
-### 📂 The `docs/` Folder
-- **`docs/agent_rules.md`**: The "Constitution". **Always ask your AI agent to read this file first.** It defines the coding style, strict architectural boundaries, and TDD workflow.
-- **`docs/architecture.md`**: The blueprint of the Modular Monolith structure.
-- **`docs/tech_stack.md`**: The definitive list of approved libraries and tools.
-- **`docs/project_brief.md`**: The current project status and implementation plans.
+### 📂 Key Documentation
+*   **[`docs/INITIATION.md`](docs/INITIATION.md)**: **START HERE**. Contains the "Perfect Prompt" to initialize your AI Agent.
+*   **[`docs/rules/workflows.md`](docs/rules/workflows.md)**: Procedures for running, testing, and adding features.
+*   **[`docs/content/architecture.md`](docs/content/architecture.md)**: The System Model (Multi-Tenancy, Auth, Data Flow).
+*   **[`docs/rules/conventions.md`](docs/rules/conventions.md)**: Strict coding standards and patterns.
 
 ### 🤖 How to "Prime" Your AI Agent
-To get the best results when using AI coding assistants with this starter:
-
-1.  **Open the Workspace**: Open the root folder in your editor.
-2.  **Prime the Context**: Copy and paste this prompt to your agent:
-
-    > "I am building with the Antigravity MERN Starter. Read `docs/agent_rules.md` (The Law), `docs/tech_stack.md`, and `docs/architecture.md`. Use `docs/project_brief.md` to understand the current status.
-    >
-    > We are following the **Antigravity Protocol**:
-    > 1. **TDD is mandatory** for the backend.
-    > 2. **Strict Boundaries**: Frontend never imports from Backend.
-    > 3. **Documentation**: Keep `task.md` and `implementation_plan.md` updated.
-    >
-    > If this is a fresh start, please run `pnpm install` and verify the system with `pnpm test`.
-    >
-    > Let's start. My first objective is: [DESCRIBE YOUR GOAL HERE]"
-3.  **Follow the Protocol**: The agent is trained (via the rules) to:
-    - Update `task.md` for progress tracking.
-    - Write tests *before* implementation (TDD).
-    - Generate Bruno API docs automatically.
+To get the best results:
+1.  Open `docs/INITIATION.md`.
+2.  Copy the code block under **The "Initiation" Prompt**.
+3.  Paste it into your AI chat (Cursor, Windsurf, ChatGPT).
+4.  The agent will then read the necessary context files automatically.
 
 ## 📂 Project Structure
 

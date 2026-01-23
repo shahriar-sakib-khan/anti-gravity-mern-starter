@@ -26,8 +26,8 @@ export const Avatar = ({ src, alt, size = 'md', className = '' }: AvatarProps) =
   }
 
   return (
-    <div className={`${sizes[size]} rounded-full bg-white/10 flex items-center justify-center border-2 border-white/10 ${className}`}>
-      <User className="text-gray-400" size={size === 'sm' ? 16 : size === 'md' ? 20 : size === 'lg' ? 40 : 64} />
+    <div className={`${sizes[size]} rounded-full bg-muted flex items-center justify-center border-2 border-border ${className}`}>
+      <User className="text-muted-foreground" size={size === 'sm' ? 16 : size === 'md' ? 20 : size === 'lg' ? 40 : 64} />
     </div>
   );
 };

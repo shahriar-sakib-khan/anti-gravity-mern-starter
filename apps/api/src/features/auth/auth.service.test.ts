@@ -1,3 +1,14 @@
+/**
+ * TEST SCENARIOS (Manifest)
+ * ---------------------------------------------------
+ * 1. [Register] create new user with hashed password
+ * 2. [Login] return access & refresh tokens for valid credentials
+ * 3. [Refresh] rotate tokens successfully for valid refresh token
+ * 4. [Refresh] throw if refresh token is invalid (Security)
+ * 5. [Refresh] throw if token reused/revoked (Security)
+ * 6. [Logout] remove refresh token from DB
+ * ---------------------------------------------------
+ */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { AuthService } from './auth.service';
 import { User } from '../user/user.model';

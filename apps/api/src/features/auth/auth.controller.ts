@@ -1,17 +1,7 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
 import { AuthService } from './auth.service';
-
-const registerSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-  name: z.string().min(1),
-});
-
-const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string(),
-});
+import { loginSchema, registerSchema } from '@repo/shared';
 
 export class AuthController {
   static async register(req: Request, res: Response) {

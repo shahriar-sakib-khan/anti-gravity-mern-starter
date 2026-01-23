@@ -1,3 +1,12 @@
+/**
+ * TEST SCENARIOS (Manifest)
+ * ---------------------------------------------------
+ * 1. [Happy Path] Login sets refreshToken cookie & returns accessToken (200)
+ * 2. [Happy Path] Refresh token rotates and returns new access/refresh tokens (200)
+ * 3. [Validation] Refresh with missing cookie returns 401
+ * 4. [Happy Path] Logout clears refresh cookie (200)
+ * ---------------------------------------------------
+ */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import request from 'supertest';
 import express from 'express';

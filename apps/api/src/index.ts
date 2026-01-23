@@ -7,6 +7,8 @@ import authRoutes from "./features/auth/auth.routes";
 import userRoutes from './features/user/user.routes';
 import cookieParser from "cookie-parser";
 import { logger, morganMiddleware } from "./config/logger";
+import { StoreRoutes } from './features/store/store.routes';
+import { StaffPublicRoutes } from './features/staff/staff.routes';
 import { authenticate } from './middleware/auth.middleware';
 
 dotenv.config();
@@ -30,6 +32,8 @@ connectDB().then(() => {
 // Routes
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/stores", StoreRoutes); // Stores + Nested Staff Management
+app.use("/staff", StaffPublicRoutes); // Staff Public (Login)
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello from API" });

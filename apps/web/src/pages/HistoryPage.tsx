@@ -1,12 +1,10 @@
-import { UserLayout } from '../components/layout/UserLayout';
-
 export const HistoryPage = () => {
   return (
-    <UserLayout>
-      <div className="bg-white/5 border border-white/10 rounded-xl p-8">
-        <h2 className="text-2xl font-bold text-white mb-4">Activity History</h2>
-        <p className="text-gray-400">No recent activity found.</p>
+    <div className="max-w-4xl mx-auto">
+      <div className="bg-card border border-border rounded-xl p-8 shadow-sm">
+        <h2 className="text-2xl font-bold text-foreground mb-4">Activity History</h2>
+        <p className="text-muted-foreground">No recent activity found.</p>
       </div>
-    </UserLayout>
+    </div>
   );
 };
